@@ -1,0 +1,166 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* BASE */
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1f2933;
+    background-color: #ffffff;
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* HEADER */
+  .site-header {
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #ffffff;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .main-nav a {
+    margin-left: 24px;
+    text-decoration: none;
+    color: #1f2933;
+    font-weight: 500;
+  }
+  
+  .main-nav a:hover {
+    color: #2563eb;
+  }
+  
+  /* HERO */
+  .hero {
+    background-color: #f9fafb;
+    padding: 80px 0;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+  
+  .hero p {
+    max-width: 700px;
+    color: #4b5563;
+  }
+  
+  /* SECTIONS */
+  .section {
+    padding: 60px 0;
+  }
+  
+  .section h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  
+  .section p {
+    max-width: 800px;
+    color: #4b5563;
+  }
+  
+  .section-subtitle {
+    color: #6b7280;
+    margin-bottom: 30px;
+  }
+  
+  /* MEDIA / IMAGES */
+  .media {
+    background-color: #ffffff;
+  }
+  
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .media-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+  }
+  
+  /* FOOTER */
+  .site-footer {
+    background-color: #111827;
+    color: #ffffff;
+    margin-top: 80px;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px 20px;
+  }
+  
+  .site-footer p {
+    color: #d1d5db;
+    font-size: 14px;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid #374151;
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+    color: #9ca3af;
+  }
+  
+  /* MOBILE RESPONSIVE */
+  @media (max-width: 768px) {
+  
+    .header-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .main-nav {
+      margin-top: 10px;
+    }
+  
+    .main-nav a {
+      margin-left: 0;
+      margin-right: 16px;
+    }
+  
+    .hero {
+      padding: 60px 0;
+    }
+  
+    .hero h1 {
+      font-size: 28px;
+    }
+  
+    .section {
+      padding: 40px 0;
+    }
+  
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
