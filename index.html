@@ -9,20 +9,7 @@
 <body>
 
 <!-- HEADER -->
-<header class="site-header">
-  <div class="container header-container">
-    <div class="logo">
-      <!-- Replace with your logo later -->
-      iKIGAI
-    </div>
-    <nav class="main-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </div>
-</header>
+ <div w3-include-html="components/header.html"></div>
 
 <!-- HERO -->
 <section class="hero">
@@ -71,25 +58,10 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div>
-      <strong>iKIGAI</strong>
-      <p>
-        Building reliable and scalable software solutions for modern businesses.
-      </p>
-    </div>
-
-    <div>
-      <strong>Contact</strong>
-      <p>Email: contact@ikigai.com</p>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 iKIGAI. All rights reserved.
-  </div>
-</footer>
-
+<div w3-include-html="components/footer.html"></div>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script>
+    w3.includeHTML();
+  </script>
 </body>
 </html>
