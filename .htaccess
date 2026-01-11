@@ -1,0 +1,10 @@
+# Apache configuration for clean URLs
+# Redirect /index.html to root URL
+RewriteEngine On
+
+# Redirect /index.html to / (root)
+RewriteCond %{THE_REQUEST} /index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Serve index.html when accessing root directory
+DirectoryIndex index.html index.htm

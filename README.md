@@ -1,6 +1,6 @@
-# iKIGAI Corporate Website
+# IKIGAI Corporate Website
 
-This repository contains the static corporate website for **iKIGAI**, a software development company focused on building reliable, scalable, and purpose-driven systems.
+This repository contains the static corporate website for **IKIGAI**, a software development company focused on building reliable, scalable, and purpose-driven systems.
 
 The website is designed to be:
 - Modern and professional
@@ -15,7 +15,7 @@ The website is designed to be:
 The website currently includes the following pages:
 
 - **Home (`index.html`)**  
-  Overview of iKIGAI, core offerings, and visual highlights.
+  Overview of IKIGAI, core offerings, and visual highlights.
 
 - **About Us (`about.html`)**  
   Company background, vision, and development approach.
