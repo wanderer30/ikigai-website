@@ -10,9 +10,27 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial, sans-serif;
     color: #1f2937;
     background-color: #ffffff;
+    background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
@@ -84,11 +102,26 @@ body {
 
 /* HERO */
 .hero {
-    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     padding: 120px 0;
     border-bottom: 1px solid #e5e7eb;
     position: relative;
     overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(249, 250, 251, 0.88) 0%, rgba(243, 244, 246, 0.90) 100%);
+    z-index: 0;
 }
 
 .hero::before {
@@ -98,8 +131,9 @@ body {
     right: 0;
     width: 40%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -115,7 +149,7 @@ body {
 
 .hero .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero p {
@@ -130,10 +164,27 @@ body {
 /* SECTIONS */
 .section {
     padding: 80px 0;
+    position: relative;
 }
 
-.section:nth-child(even) {
-    background-color: #f9fafb;
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 0;
+}
+
+.section:nth-child(even)::before {
+    background-color: rgba(249, 250, 251, 0.80);
+}
+
+.section .container {
+    position: relative;
+    z-index: 1;
 }
 
 .section h2 {
@@ -595,6 +646,14 @@ body {
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+    
+    .hero {
+        background-attachment: scroll;
+    }
+    
     .container {
         padding: 0 20px;
     }
