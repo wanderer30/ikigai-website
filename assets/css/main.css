@@ -346,13 +346,13 @@ body::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 48px;
-    padding: 64px 0 40px;
+    padding: 32px 0 24px;
 }
 
 .footer-grid > div {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .footer-grid strong {
@@ -383,7 +383,7 @@ body::before {
 .footer-bottom {
     border-top: 1px solid #374151;
     text-align: center;
-    padding: 24px;
+    padding: 16px;
     font-size: 14px;
     color: #9ca3af;
     background-color: rgba(15, 23, 42, 0.5);
@@ -790,8 +790,8 @@ body::before {
 
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
-        padding: 48px 0 32px;
+        gap: 24px;
+        padding: 24px 0 20px;
     }
 
     .footer-container {
