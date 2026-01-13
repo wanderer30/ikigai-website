@@ -839,49 +839,51 @@ body::before {
 
 /* DARK MODE */
 body.dark-mode {
-    background-color: #0f172a;
+    background-color: #0a0a0a;
     color: #f1f5f9;
 }
 
 body.dark-mode::before {
-    background: rgba(15, 23, 42, 0.85);
+    background: rgba(10, 10, 10, 0.85);
 }
 
 body.dark-mode .site-header {
-    background-color: #1e293b;
-    border-bottom-color: #334155;
+    background-color: #000000;
+    border-bottom-color: #1a1a1a;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
 }
 
 body.dark-mode .header-container {
-    background-color: #1e293b;
+    background-color: #000000;
 }
 
 body.dark-mode .main-nav a {
-    color: #cbd5e1;
+    color: #e5e7eb;
 }
 
 body.dark-mode .main-nav a:hover {
     color: #60a5fa;
-    background-color: rgba(37, 99, 235, 0.1);
+    background-color: rgba(37, 99, 235, 0.15);
 }
 
 body.dark-mode .dark-mode-toggle {
-    border-color: #475569;
+    border-color: #333333;
     color: #f1f5f9;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .dark-mode-toggle:hover {
-    background-color: #334155;
-    border-color: #64748b;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #4a4a4a;
 }
 
 
 body.dark-mode .hero::after {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.88) 0%, rgba(15, 23, 42, 0.90) 100%);
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.88) 0%, rgba(10, 10, 10, 0.90) 100%);
 }
 
 body.dark-mode .hero {
-    border-bottom-color: #334155;
+    border-bottom-color: #1a1a1a;
 }
 
 body.dark-mode .hero h1 {
@@ -893,11 +895,11 @@ body.dark-mode .hero p {
 }
 
 body.dark-mode .section::before {
-    background-color: rgba(30, 41, 59, 0.75);
+    background-color: rgba(20, 20, 20, 0.75);
 }
 
 body.dark-mode .section:nth-child(even)::before {
-    background-color: rgba(15, 23, 42, 0.80);
+    background-color: rgba(15, 15, 15, 0.80);
 }
 
 body.dark-mode .section h2 {
@@ -914,8 +916,8 @@ body.dark-mode .section-subtitle {
 
 body.dark-mode .benefit-item,
 body.dark-mode .service-item {
-    background-color: #1e293b;
-    border-color: #334155;
+    background-color: #1a1a1a;
+    border-color: #2a2a2a;
 }
 
 body.dark-mode .benefit-item h3,
@@ -931,7 +933,7 @@ body.dark-mode .service-description {
 body.dark-mode .benefit-item:hover,
 body.dark-mode .service-item:hover {
     border-color: #3b82f6;
-    background-color: #1e3a8a;
+    background-color: #252525;
 }
 
 body.dark-mode .contact-info a {

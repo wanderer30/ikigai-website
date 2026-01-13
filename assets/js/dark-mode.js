@@ -1,128 +1,103 @@
 // Dark Mode Toggle Functionality
 (function() {
-    let isInitialized = false;
-    
-    // Initialize dark mode
-    function initDarkMode() {
-        if (isInitialized) return;
-        
+    // Apply saved theme on page load
+    function applyTheme() {
         const currentTheme = localStorage.getItem('theme') || 'light';
+        const isDark = currentTheme === 'dark';
         
-        // Apply theme immediately
-        if (currentTheme === 'dark') {
+        if (isDark) {
             document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
         }
         
         // Update logo
         const logoImg = document.querySelector('.logo img');
         if (logoImg) {
-            if (currentTheme === 'dark') {
-                logoImg.src = logoImg.src.replace('white.jpg', 'black.jpg');
+            if (isDark) {
+                if (logoImg.src.includes('white.jpg')) {
+                    logoImg.src = logoImg.src.replace('white.jpg', 'black.jpg');
+                }
             } else {
-                logoImg.src = logoImg.src.replace('black.jpg', 'white.jpg');
+                if (logoImg.src.includes('black.jpg')) {
+                    logoImg.src = logoImg.src.replace('black.jpg', 'white.jpg');
+                }
             }
         }
         
-        // Setup toggle button - use event delegation
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        if (darkModeToggle) {
-            const toggleIcon = darkModeToggle.querySelector('.toggle-icon');
-            
-            // Update icon
-            if (toggleIcon) {
-                toggleIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
-            }
-            
-            // Remove any existing listeners and add new one
-            const newToggle = darkModeToggle.cloneNode(true);
-            darkModeToggle.parentNode.replaceChild(newToggle, darkModeToggle);
-            
-            // Add click event to new button
-            newToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const isDarkMode = document.body.classList.toggle('dark-mode');
-                const newTheme = isDarkMode ? 'dark' : 'light';
-                
-                // Save preference
-                localStorage.setItem('theme', newTheme);
-                
-                // Update icon
-                const icon = newToggle.querySelector('.toggle-icon');
-                if (icon) {
-                    icon.textContent = isDarkMode ? '☀️' : '🌙';
-                }
-                
-                // Update logo
-                const logo = document.querySelector('.logo img');
-                if (logo) {
-                    if (isDarkMode) {
-                        logo.src = logo.src.replace('white.jpg', 'black.jpg');
-                    } else {
-                        logo.src = logo.src.replace('black.jpg', 'white.jpg');
-                    }
-                }
-            });
-            
-            isInitialized = true;
+        // Update icon
+        const toggleIcon = document.querySelector('#darkModeToggle .toggle-icon');
+        if (toggleIcon) {
+            toggleIcon.textContent = isDark ? '☀️' : '🌙';
         }
     }
     
-    // Use event delegation on document for the toggle button
+    // Toggle dark mode
+    function toggleDarkMode() {
+        const isDarkMode = document.body.classList.toggle('dark-mode');
+        const newTheme = isDarkMode ? 'dark' : 'light';
+        
+        // Save preference
+        localStorage.setItem('theme', newTheme);
+        
+        // Update icon
+        const toggleIcon = document.querySelector('#darkModeToggle .toggle-icon');
+        if (toggleIcon) {
+            toggleIcon.textContent = isDarkMode ? '☀️' : '🌙';
+        }
+        
+        // Update logo
+        const logo = document.querySelector('.logo img');
+        if (logo) {
+            if (isDarkMode) {
+                logo.src = logo.src.replace('white.jpg', 'black.jpg');
+            } else {
+                logo.src = logo.src.replace('black.jpg', 'white.jpg');
+            }
+        }
+    }
+    
+    // Apply theme immediately
+    applyTheme();
+    
+    // Use event delegation for the toggle button (works even if button loads later)
     document.addEventListener('click', function(e) {
-        if (e.target.closest('#darkModeToggle')) {
-            const toggle = e.target.closest('#darkModeToggle');
-            const isDarkMode = document.body.classList.toggle('dark-mode');
-            const newTheme = isDarkMode ? 'dark' : 'light';
-            
-            // Save preference
-            localStorage.setItem('theme', newTheme);
-            
-            // Update icon
-            const icon = toggle.querySelector('.toggle-icon');
-            if (icon) {
-                icon.textContent = isDarkMode ? '☀️' : '🌙';
-            }
-            
-            // Update logo
-            const logo = document.querySelector('.logo img');
-            if (logo) {
-                if (isDarkMode) {
-                    logo.src = logo.src.replace('white.jpg', 'black.jpg');
-                } else {
-                    logo.src = logo.src.replace('black.jpg', 'white.jpg');
-                }
-            }
+        const toggle = e.target.closest('#darkModeToggle');
+        if (toggle) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleDarkMode();
         }
     });
     
-    // Try to initialize multiple times to catch when header loads
-    function tryInit() {
-        initDarkMode();
-        if (!isInitialized) {
-            setTimeout(tryInit, 100);
+    // Also try to apply theme when header loads
+    function checkAndApply() {
+        const toggle = document.getElementById('darkModeToggle');
+        if (toggle) {
+            applyTheme();
         }
     }
     
-    // Start trying to initialize
+    // Check multiple times for dynamically loaded content
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            tryInit();
+            setTimeout(checkAndApply, 100);
+            setTimeout(checkAndApply, 500);
         });
     } else {
-        tryInit();
+        setTimeout(checkAndApply, 100);
+        setTimeout(checkAndApply, 500);
     }
     
-    // Also try after window loads
     window.addEventListener('load', function() {
-        setTimeout(tryInit, 200);
+        setTimeout(checkAndApply, 200);
+        setTimeout(checkAndApply, 500);
     });
     
-    // Use MutationObserver to watch for when header is added
-    const observer = new MutationObserver(function(mutations) {
-        if (document.getElementById('darkModeToggle') && !isInitialized) {
-            initDarkMode();
+    // Watch for when header is added
+    const observer = new MutationObserver(function() {
+        if (document.getElementById('darkModeToggle')) {
+            applyTheme();
         }
     });
     
