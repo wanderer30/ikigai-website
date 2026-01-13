@@ -101,6 +101,30 @@ body::before {
     color: #1d4ed8;
 }
 
+.dark-mode-toggle {
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.dark-mode-toggle .toggle-icon {
+    display: block;
+    line-height: 1;
+}
+
 /* HERO */
 .hero {
     background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80');
@@ -811,5 +835,114 @@ body::before {
     .section h2::after {
         width: 40px;
     }
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background-color: #0f172a;
+    color: #f1f5f9;
+}
+
+body.dark-mode::before {
+    background: rgba(15, 23, 42, 0.85);
+}
+
+body.dark-mode .site-header {
+    background-color: #1e293b;
+    border-bottom-color: #334155;
+}
+
+body.dark-mode .header-container {
+    background-color: #1e293b;
+}
+
+body.dark-mode .main-nav a {
+    color: #cbd5e1;
+}
+
+body.dark-mode .main-nav a:hover {
+    color: #60a5fa;
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+body.dark-mode .dark-mode-toggle {
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: #334155;
+    border-color: #64748b;
+}
+
+
+body.dark-mode .hero::after {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.88) 0%, rgba(15, 23, 42, 0.90) 100%);
+}
+
+body.dark-mode .hero {
+    border-bottom-color: #334155;
+}
+
+body.dark-mode .hero h1 {
+    color: #f1f5f9;
+}
+
+body.dark-mode .hero p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .section::before {
+    background-color: rgba(30, 41, 59, 0.75);
+}
+
+body.dark-mode .section:nth-child(even)::before {
+    background-color: rgba(15, 23, 42, 0.80);
+}
+
+body.dark-mode .section h2 {
+    color: #f1f5f9;
+}
+
+body.dark-mode .section p {
+    color: #cbd5e1;
+}
+
+body.dark-mode .section-subtitle {
+    color: #94a3b8;
+}
+
+body.dark-mode .benefit-item,
+body.dark-mode .service-item {
+    background-color: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode .benefit-item h3,
+body.dark-mode .service-item h3 {
+    color: #f1f5f9;
+}
+
+body.dark-mode .benefit-item p,
+body.dark-mode .service-description {
+    color: #cbd5e1;
+}
+
+body.dark-mode .benefit-item:hover,
+body.dark-mode .service-item:hover {
+    border-color: #3b82f6;
+    background-color: #1e3a8a;
+}
+
+body.dark-mode .contact-info a {
+    color: #60a5fa;
+}
+
+body.dark-mode .contact-info strong {
+    color: #f1f5f9;
+}
+
+body.dark-mode .cta-section::before {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(29, 78, 216, 0.88) 100%);
 }
   
