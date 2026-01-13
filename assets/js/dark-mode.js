@@ -2,7 +2,7 @@
 (function() {
     let isInitialized = false;
     
-    // Apply saved theme
+    // Apply saved theme and update logo
     function applyTheme() {
         const currentTheme = localStorage.getItem('theme') || 'light';
         const isDark = currentTheme === 'dark';
@@ -13,21 +13,39 @@
             document.body.classList.remove('dark-mode');
         }
         
-        // Update logo
-        const logoImg = document.querySelector('.logo img');
-        if (logoImg && logoImg.src) {
-            if (isDark) {
-                logoImg.src = logoImg.src.replace('white.jpg', 'black.jpg');
-            } else {
-                logoImg.src = logoImg.src.replace('black.jpg', 'white.jpg');
+        // Update logo - try multiple times for dynamically loaded content
+        function updateLogo() {
+            const logoImg = document.querySelector('.logo img');
+            if (logoImg && logoImg.src) {
+                if (isDark) {
+                    if (!logoImg.src.includes('black.jpg')) {
+                        logoImg.src = logoImg.src.replace('white.jpg', 'black.jpg');
+                    }
+                } else {
+                    if (!logoImg.src.includes('white.jpg')) {
+                        logoImg.src = logoImg.src.replace('black.jpg', 'white.jpg');
+                    }
+                }
             }
         }
         
+        updateLogo();
+        
+        // Also try after a short delay for w3-include-html
+        setTimeout(updateLogo, 200);
+        setTimeout(updateLogo, 500);
+        
         // Update icon
-        const toggleIcon = document.querySelector('#darkModeToggle .toggle-icon');
-        if (toggleIcon) {
-            toggleIcon.textContent = isDark ? '☀️' : '🌙';
+        function updateIcon() {
+            const toggleIcon = document.querySelector('#darkModeToggle .toggle-icon');
+            if (toggleIcon) {
+                toggleIcon.textContent = isDark ? '☀️' : '🌙';
+            }
         }
+        
+        updateIcon();
+        setTimeout(updateIcon, 200);
+        setTimeout(updateIcon, 500);
     }
     
     // Toggle dark mode
@@ -58,36 +76,34 @@
     function init() {
         if (isInitialized) return;
         
-        applyTheme();
-        
         // Use event delegation - single listener on document
         document.addEventListener('click', function(e) {
             if (e.target.closest('#darkModeToggle')) {
                 e.preventDefault();
                 toggleDarkMode();
             }
-        }, { once: false, passive: true });
+        }, { passive: true });
         
         isInitialized = true;
     }
     
     // Apply theme immediately
-    if (document.body) {
-        applyTheme();
-    }
+    applyTheme();
     
     // Initialize after DOM ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', function() {
+            init();
+            applyTheme();
+        });
     } else {
         init();
+        applyTheme();
     }
     
-    // Also try after window loads (for w3-include-html)
+    // Also apply theme after window loads (for w3-include-html)
     window.addEventListener('load', function() {
-        if (!isInitialized) {
-            init();
-        }
+        init();
         applyTheme();
     });
 })();
