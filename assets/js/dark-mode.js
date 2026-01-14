@@ -1,22 +1,32 @@
 // Dark Mode Toggle Functionality
+// MODIFIED FOR DARK MODE DEFAULT - Light mode functionality commented out
+// To re-enable theme switching: Uncomment all commented sections and change default back to 'light'
 (function() {
-    let isInitialized = false;
+    // LIGHT MODE INITIALIZATION - COMMENTED OUT
+    // let isInitialized = false;
     
-    // Apply saved theme and update logo
+    // Apply dark mode theme and update logo
     function applyTheme() {
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        const isDark = currentTheme === 'dark';
+        // DARK MODE DEFAULT - Always apply dark mode
+        // To re-enable theme switching: Uncomment the lines below and change default to 'light'
+        // const currentTheme = localStorage.getItem('theme') || 'light';
+        // const isDark = currentTheme === 'dark';
         
-        if (isDark) {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.remove('dark-mode');
-        }
+        // Always apply dark mode
+        document.body.classList.add('dark-mode');
         
         // Update logo - try multiple times for dynamically loaded content
         function updateLogo() {
             const logoImg = document.querySelector('.logo img');
             if (logoImg && logoImg.src) {
+                // Always use black logo for dark mode
+                if (!logoImg.src.includes('black.jpg')) {
+                    logoImg.src = logoImg.src.replace('white.jpg', 'black.jpg');
+                }
+                
+                // LIGHT MODE LOGO LOGIC - COMMENTED OUT
+                // To re-enable: Uncomment and restore conditional logic above
+                /*
                 if (isDark) {
                     if (!logoImg.src.includes('black.jpg')) {
                         logoImg.src = logoImg.src.replace('white.jpg', 'black.jpg');
@@ -26,6 +36,7 @@
                         logoImg.src = logoImg.src.replace('black.jpg', 'white.jpg');
                     }
                 }
+                */
             }
         }
         
@@ -35,6 +46,9 @@
         setTimeout(updateLogo, 200);
         setTimeout(updateLogo, 500);
         
+        // LIGHT MODE ICON UPDATE - COMMENTED OUT
+        // To re-enable: Uncomment the function below
+        /*
         // Update icon
         function updateIcon() {
             const toggleIcon = document.querySelector('#darkModeToggle .toggle-icon');
@@ -46,8 +60,12 @@
         updateIcon();
         setTimeout(updateIcon, 200);
         setTimeout(updateIcon, 500);
+        */
     }
     
+    // LIGHT MODE TOGGLE FUNCTION - COMMENTED OUT
+    // To re-enable: Uncomment the entire function below
+    /*
     // Toggle dark mode
     function toggleDarkMode() {
         const isDarkMode = document.body.classList.toggle('dark-mode');
@@ -71,7 +89,11 @@
             }
         }
     }
+    */
     
+    // LIGHT MODE INITIALIZATION - COMMENTED OUT
+    // To re-enable: Uncomment the function below
+    /*
     // Initialize once
     function init() {
         if (isInitialized) return;
@@ -86,6 +108,7 @@
         
         isInitialized = true;
     }
+    */
     
     // Apply theme immediately
     applyTheme();
@@ -93,17 +116,20 @@
     // Initialize after DOM ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            init();
+            // LIGHT MODE INIT - COMMENTED OUT
+            // init();
             applyTheme();
         });
     } else {
-        init();
+        // LIGHT MODE INIT - COMMENTED OUT
+        // init();
         applyTheme();
     }
     
     // Also apply theme after window loads (for w3-include-html)
     window.addEventListener('load', function() {
-        init();
+        // LIGHT MODE INIT - COMMENTED OUT
+        // init();
         applyTheme();
     });
 })();
