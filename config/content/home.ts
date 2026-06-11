@@ -1,6 +1,16 @@
+export const homeSections = {
+  hero: "overview",
+  intro: "about-preview",
+  services: "capabilities",
+  benefits: "why-ikigai",
+  cta: "get-started",
+} as const;
+
 export const homeHero = {
   title: "Integrated Technology Solutions for Real-World Operations",
   subtitle: "Engineering Digital Excellence. Powering Sustainable Growth.",
+  primaryAction: { href: "/services", label: "Explore Services" },
+  secondaryAction: { href: "/contact", label: "Contact Us" },
 } as const;
 
 export const homeIntro = {
@@ -10,6 +20,18 @@ export const homeIntro = {
     "We help organizations build reliable systems, optimize operations, and prepare for the future through engineered solutions designed for real‑world environments.",
     "From planning and implementation to after‑sales support, IKIGAI is your trusted partner in driving performance, efficiency, and long‑term business value.",
   ],
+} as const;
+
+export const homeServicesPreview = {
+  title: "Our Capabilities",
+  subtitle:
+    "End-to-end solutions across software, data, infrastructure, and industrial operations.",
+  viewAll: { href: "/services", label: "View all services" },
+  highlightedTitles: [
+    "Software Applications",
+    "Data Engineering & Analytics",
+    "Renewable Energy",
+  ] as const,
 } as const;
 
 export const homeBenefits = {

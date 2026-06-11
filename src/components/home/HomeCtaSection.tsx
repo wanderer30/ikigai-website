@@ -1,21 +1,22 @@
 import Link from "next/link";
-import { homeCta } from "@/config/content/home";
+import { homeCta, homeSections } from "@/config/content/home";
 
-export function CtaSection() {
+export function HomeCtaSection() {
   return (
-    <section className="section cta-section">
+    <section
+      className="section cta-section"
+      id={homeSections.cta}
+      aria-labelledby="home-cta-title"
+    >
       <div className="container">
         <div className="cta-content">
-          <h2>{homeCta.title}</h2>
+          <h2 id="home-cta-title">{homeCta.title}</h2>
           <p>{homeCta.description}</p>
           <div className="cta-buttons">
             <Link href={homeCta.primaryButton.href} className="btn btn-primary">
               {homeCta.primaryButton.label}
             </Link>
-            <Link
-              href={homeCta.secondaryButton.href}
-              className="btn btn-secondary"
-            >
+            <Link href={homeCta.secondaryButton.href} className="btn btn-secondary">
               {homeCta.secondaryButton.label}
             </Link>
           </div>
