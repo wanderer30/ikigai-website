@@ -1,9 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { DarkModeProvider } from "@/components/layout/DarkModeProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const GradientBackground = dynamic(
   () =>
@@ -19,15 +19,13 @@ type SiteShellProps = {
 
 export function SiteShell({ children }: SiteShellProps) {
   return (
-    <>
+    <ThemeProvider>
       <GradientBackground />
-      <DarkModeProvider>
-        <div className="site-shell">
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </div>
-      </DarkModeProvider>
-    </>
+      <div className="site-shell">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }

@@ -7,6 +7,14 @@
 
 /* THEME — see config/theme.ts */
 :root {
+    --blur-glass: 20px;
+    --blur-subtle: 12px;
+    --radius-glass: 12px;
+    --radius-sm: 8px;
+}
+
+html.dark-mode,
+body.dark-mode {
     --bg-base: #010204;
     --bg-elevated: rgba(255, 255, 255, 0.04);
     --bg-elevated-hover: rgba(255, 255, 255, 0.07);
@@ -15,10 +23,62 @@
     --text-primary: #f5f5f5;
     --text-secondary: #a3a3a3;
     --text-muted: #737373;
-    --blur-glass: 20px;
-    --blur-subtle: 12px;
-    --radius-glass: 12px;
-    --radius-sm: 8px;
+    --surface-bg: rgba(5, 5, 5, 0.35);
+    --surface-bg-hover: rgba(5, 5, 5, 0.42);
+    --header-bg: rgba(5, 5, 5, 0.4);
+    --footer-bg: rgba(5, 5, 5, 0.4);
+    --cta-overlay-bg: rgba(5, 5, 5, 0.35);
+    --gradient-overlay: rgba(1, 2, 4, 0.45);
+    --gradient-fallback: #010204;
+    --gradient-orb-a: #12327a;
+    --gradient-orb-b: #1e4a9e;
+    --gradient-orb-opacity: 0.35;
+    --gradient-orb-blur: 90px;
+    --menu-bg: #000000;
+    --menu-text: #f5f5f5;
+    --menu-border: #1f1f1f;
+    --menu-link-border: #1a1a1a;
+    --menu-close-bg: #111111;
+    --menu-close-border: #2a2a2a;
+    --menu-close-hover-bg: #1a1a1a;
+    --menu-title: #a3a3a3;
+    --chip-bg: rgba(255, 255, 255, 0.03);
+    --hero-shine: rgba(255, 255, 255, 0.03);
+    --btn-primary-hover: rgba(255, 255, 255, 0.85);
+    --btn-primary-shadow: rgba(255, 255, 255, 0.08);
+    --image-shadow: rgba(0, 0, 0, 0.4);
+}
+
+html.light-mode,
+body.light-mode {
+    --bg-base: #ffffff;
+    --blur-glass: 0px;
+    --blur-subtle: 0px;
+    --bg-elevated: rgba(255, 255, 255, 0.92);
+    --bg-elevated-hover: rgba(255, 255, 255, 0.98);
+    --border-glass: rgba(15, 23, 42, 0.08);
+    --border-glass-strong: rgba(15, 23, 42, 0.14);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --surface-bg: rgba(255, 255, 255, 0.94);
+    --surface-bg-hover: rgba(255, 255, 255, 0.98);
+    --header-bg: rgba(255, 255, 255, 0.94);
+    --footer-bg: rgba(255, 255, 255, 0.94);
+    --cta-overlay-bg: rgba(255, 255, 255, 0.88);
+    --menu-bg: #ffffff;
+    --menu-text: #0f172a;
+    --menu-border: #e2e8f0;
+    --menu-link-border: #f1f5f9;
+    --menu-close-bg: #f8fafc;
+    --menu-close-border: #e2e8f0;
+    --menu-close-hover-bg: #f1f5f9;
+    --menu-title: #64748b;
+    --chip-bg: rgba(15, 23, 42, 0.04);
+    --hero-shine: rgba(255, 255, 255, 0.45);
+    --btn-primary-hover: #1e293b;
+    --btn-primary-shadow: rgba(15, 23, 42, 0.12);
+    --image-shadow: rgba(15, 23, 42, 0.1);
 }
 
 /* BASE */
@@ -51,6 +111,10 @@ body::before {
     overflow: hidden;
 }
 
+.gradient-background--plain {
+    background: #ffffff;
+}
+
 .gradient-background__canvas {
     width: 100% !important;
     height: 100% !important;
@@ -59,14 +123,16 @@ body::before {
 .gradient-background__overlay {
     position: absolute;
     inset: 0;
-    background: rgba(1, 2, 4, 0.45);
+    background: var(--gradient-overlay);
+    transition: background 0.3s ease;
 }
 
 .gradient-background__fallback {
     position: absolute;
     inset: 0;
-    background: #010204;
+    background: var(--gradient-fallback);
     overflow: hidden;
+    transition: background 0.3s ease;
 }
 
 .gradient-background__fallback::before,
@@ -74,8 +140,9 @@ body::before {
     content: '';
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.35;
+    filter: blur(var(--gradient-orb-blur));
+    opacity: var(--gradient-orb-opacity);
+    transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 .gradient-background__fallback::before {
@@ -83,7 +150,7 @@ body::before {
     height: 55vw;
     top: -10%;
     left: -10%;
-    background: radial-gradient(circle, #12327a 0%, transparent 70%);
+    background: radial-gradient(circle, var(--gradient-orb-a) 0%, transparent 70%);
     animation: gradient-drift-a 14s ease-in-out infinite;
 }
 
@@ -92,7 +159,7 @@ body::before {
     height: 50vw;
     bottom: -15%;
     right: -10%;
-    background: radial-gradient(circle, #1e4a9e 0%, transparent 70%);
+    background: radial-gradient(circle, var(--gradient-orb-b) 0%, transparent 70%);
     animation: gradient-drift-b 18s ease-in-out infinite;
 }
 
@@ -108,7 +175,7 @@ body::before {
 
 /* GLASS SURFACE — DOM containers (CSS backdrop-filter) */
 .glass-surface {
-    background: rgba(5, 5, 5, 0.35);
+    background: var(--surface-bg);
     backdrop-filter: blur(var(--blur-subtle));
     -webkit-backdrop-filter: blur(var(--blur-subtle));
     border: 1px solid var(--border-glass);
@@ -118,7 +185,7 @@ body::before {
 
 .glass-surface:hover {
     border-color: var(--border-glass-strong);
-    background: rgba(5, 5, 5, 0.42);
+    background: var(--surface-bg-hover);
 }
 
 .container {
@@ -129,13 +196,20 @@ body::before {
 
 /* HEADER */
 .site-header {
-    background: rgba(5, 5, 5, 0.4);
+    background: var(--header-bg);
     backdrop-filter: blur(var(--blur-glass));
     -webkit-backdrop-filter: blur(var(--blur-glass));
     border-bottom: 1px solid var(--border-glass);
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .header-container {
@@ -241,9 +315,10 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background-color: #000000;
+    background-color: var(--menu-bg);
+    color: var(--menu-text);
     transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.3s ease;
     pointer-events: none;
     will-change: transform;
 }
@@ -260,7 +335,7 @@ body::before {
     height: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: #000000;
+    background-color: var(--menu-bg);
     padding: max(20px, env(safe-area-inset-top)) 20px max(32px, env(safe-area-inset-bottom));
 }
 
@@ -270,7 +345,7 @@ body::before {
     justify-content: space-between;
     padding-bottom: 20px;
     margin-bottom: 12px;
-    border-bottom: 1px solid #1f1f1f;
+    border-bottom: 1px solid var(--menu-border);
 }
 
 .mobile-menu__title {
@@ -278,7 +353,7 @@ body::before {
     font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #a3a3a3;
+    color: var(--menu-title);
 }
 
 .mobile-menu__close {
@@ -287,10 +362,10 @@ body::before {
     justify-content: center;
     width: 36px;
     height: 36px;
-    border: 1px solid #2a2a2a;
+    border: 1px solid var(--menu-close-border);
     border-radius: var(--radius-sm);
-    background: #111111;
-    color: #f5f5f5;
+    background: var(--menu-close-bg);
+    color: var(--menu-text);
     font-size: 22px;
     line-height: 1;
     cursor: pointer;
@@ -298,7 +373,7 @@ body::before {
 }
 
 .mobile-menu__close:hover {
-    background: #1a1a1a;
+    background: var(--menu-close-hover-bg);
 }
 
 .mobile-menu__links {
@@ -308,25 +383,42 @@ body::before {
     gap: 0;
     margin: 0;
     padding: 0;
-    background-color: #000000;
+    background-color: var(--menu-bg);
 }
 
 .mobile-menu__link {
     display: block;
     padding: 18px 4px;
-    color: #f5f5f5;
+    color: var(--menu-text);
     text-decoration: none;
     font-size: 18px;
     font-weight: 400;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #1a1a1a;
+    border-bottom: 1px solid var(--menu-link-border);
     transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
 .mobile-menu__link:hover {
-    color: #ffffff;
+    color: var(--text-primary);
     padding-left: 8px;
+}
+
+.mobile-menu__theme {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--menu-border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mobile-menu__theme-label {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--menu-title);
 }
 
 body.mobile-menu-open {
@@ -339,28 +431,47 @@ body.mobile-menu-open {
     }
 }
 
-.dark-mode-toggle {
-    background: transparent;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-size: 18px;
-    transition: all 0.3s ease;
-    display: flex;
+.theme-toggle {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 8px;
+    gap: 8px;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 14px;
+    font-family: inherit;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.dark-mode-toggle:hover {
-    background-color: #f3f4f6;
-    border-color: #d1d5db;
+.theme-toggle:hover {
+    background: var(--bg-elevated-hover);
+    border-color: var(--border-glass-strong);
 }
 
-.dark-mode-toggle .toggle-icon {
-    display: block;
+.theme-toggle__icon {
+    font-size: 18px;
     line-height: 1;
+}
+
+.theme-toggle__label {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+.theme-toggle--desktop {
+    flex-shrink: 0;
+}
+
+.theme-toggle--mobile {
+    width: 100%;
+    justify-content: flex-start;
 }
 
 /* HOME PAGE — centered layout */
@@ -442,7 +553,7 @@ body.mobile-menu-open {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+    background: linear-gradient(180deg, var(--hero-shine) 0%, transparent 100%);
     z-index: 0;
     pointer-events: none;
 }
@@ -587,7 +698,7 @@ body.mobile-menu-open {
     height: auto;
     border-radius: var(--radius-glass);
     border: 1px solid var(--border-glass);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px var(--image-shadow);
 }
 
 .content-with-image {
@@ -606,7 +717,7 @@ body.mobile-menu-open {
     height: auto;
     border-radius: var(--radius-glass);
     border: 1px solid var(--border-glass);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 32px var(--image-shadow);
 }
 
 .text-side {
@@ -675,12 +786,13 @@ body.mobile-menu-open {
 
 /* FOOTER */
 .site-footer {
-    background: rgba(5, 5, 5, 0.4);
+    background: var(--footer-bg);
     backdrop-filter: blur(var(--blur-glass));
     -webkit-backdrop-filter: blur(var(--blur-glass));
     color: var(--text-primary);
     margin-top: 80px;
     border-top: 1px solid var(--border-glass);
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .footer-container {
@@ -806,10 +918,11 @@ body.mobile-menu-open {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(5, 5, 5, 0.35);
+    background: var(--cta-overlay-bg);
     backdrop-filter: blur(var(--blur-subtle));
     -webkit-backdrop-filter: blur(var(--blur-subtle));
     z-index: 0;
+    transition: background 0.3s ease;
 }
 
 .cta-section .container {
@@ -863,9 +976,9 @@ body.mobile-menu-open {
 }
 
 .btn-primary:hover {
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: var(--btn-primary-hover);
     transform: translateY(-1px);
-    box-shadow: 0 4px 24px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px var(--btn-primary-shadow);
 }
 
 .btn-secondary {
@@ -1101,7 +1214,7 @@ body.mobile-menu-open {
     padding: 6px 12px;
     border: 1px solid var(--border-glass);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--chip-bg);
 }
 
 /* MOBILE RESPONSIVE */
@@ -1135,6 +1248,10 @@ body.mobile-menu-open {
     }
 
     .main-nav--desktop {
+        display: none;
+    }
+
+    .theme-toggle--desktop {
         display: none;
     }
 
@@ -1447,9 +1564,19 @@ body.mobile-menu-open {
     }
 }
 
-/* DARK MODE — base styles are already glass black; kept for class hook */
-body.dark-mode {
+body.dark-mode,
+body.light-mode {
     background-color: var(--bg-base);
     color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode — keep background gradient sharp (no glass blur bleed) */
+html.light-mode .site-header,
+html.light-mode .site-footer,
+html.light-mode .glass-surface,
+html.light-mode .cta-section::before {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
   

@@ -1,15 +1,21 @@
-export const theme = {
-  colors: {
-    bgBase: "#050505",
-    bgElevated: "rgba(255, 255, 255, 0.04)",
-    bgElevatedHover: "rgba(255, 255, 255, 0.07)",
-    borderGlass: "rgba(255, 255, 255, 0.08)",
-    borderGlassStrong: "rgba(255, 255, 255, 0.14)",
-    textPrimary: "#f5f5f5",
-    textSecondary: "#a3a3a3",
-    textMuted: "#737373",
-    accent: "#ffffff",
+export const themeStorageKey = "ikigai-theme";
+
+export const themeModes = ["light", "dark"] as const;
+
+export type ThemeMode = (typeof themeModes)[number];
+
+export const themeConfig = {
+  defaultMode: "dark" as ThemeMode,
+  toggle: {
+    lightLabel: "Switch to light mode",
+    darkLabel: "Switch to dark mode",
+    lightText: "Light",
+    darkText: "Dark",
+    mobileSectionLabel: "Appearance",
   },
+} as const;
+
+export const theme = {
   effects: {
     blur: "20px",
     blurSubtle: "12px",

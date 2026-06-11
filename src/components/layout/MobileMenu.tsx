@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { themeConfig } from "@/config/theme";
 import { mobileMenuConfig } from "@/config/navigation";
 import { navigationLinks } from "@/config/site";
 
@@ -49,6 +51,12 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </li>
           ))}
         </ul>
+        <div className="mobile-menu__theme">
+          <span className="mobile-menu__theme-label">
+            {themeConfig.toggle.mobileSectionLabel}
+          </span>
+          <ThemeToggle showLabel className="theme-toggle--mobile" />
+        </div>
       </div>
     </nav>,
     document.body,

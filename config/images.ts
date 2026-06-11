@@ -1,6 +1,10 @@
 export const images = {
   logo: {
-    default: "/logo-simple-transparent.png",
+    default: {
+      src: "/logo-simple-transparent.png",
+      width: 599,
+      height: 208,
+    },
     icon: "/logo-icon.png",
   },
   hero: {

@@ -3,13 +3,15 @@ import Link from "next/link";
 import { images } from "@/config/images";
 
 export function Logo() {
+  const { src, width, height } = images.logo.default;
+
   return (
     <Link href="/" className="logo">
       <Image
-        src={images.logo.default}
+        src={src}
         alt="IKIGAI Logo"
-        width={299}
-        height={108}
+        width={width}
+        height={height}
         priority
       />
     </Link>
