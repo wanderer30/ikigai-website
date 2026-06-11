@@ -1,7 +1,17 @@
+export const aboutSections = {
+  hero: "about-overview",
+  whoWeAre: "who-we-are",
+  visionMission: "vision-mission",
+  values: "core-values",
+  cta: "work-with-us",
+} as const;
+
 export const aboutHero = {
   title: "About IKIGAI",
   subtitle:
     "Engineering expertise, digital innovation, and hands‑on execution for real‑world results.",
+  primaryAction: { href: "/services", label: "Our Services" },
+  secondaryAction: { href: "/contact", label: "Contact Us" },
 } as const;
 
 export const aboutWhoWeAre = {
@@ -27,6 +37,7 @@ export const aboutMission = {
 
 export const aboutCoreValues = {
   title: "Our Core Values",
+  subtitle: "The principles that guide how we work with every client and project.",
   values: [
     { name: "Integrity", description: "We deliver what we commit." },
     {
@@ -46,4 +57,12 @@ export const aboutCoreValues = {
       description: "We design solutions that perform in real operations.",
     },
   ],
+} as const;
+
+export const aboutCta = {
+  title: "Partner With IKIGAI",
+  description:
+    "Let's build reliable solutions together — from strategy and implementation to long-term support.",
+  primaryButton: { href: "/contact", label: "Get in Touch" },
+  secondaryButton: { href: "/services", label: "Explore Services" },
 } as const;
