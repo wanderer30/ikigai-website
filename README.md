@@ -1,54 +1,63 @@
 # IKIGAI Corporate Website
 
-This repository contains the static corporate website for **IKIGAI**, a software development company focused on building reliable, scalable, and purpose-driven systems.
+Next.js corporate website for **IKIGAI**, a multi-disciplinary technology solutions company.
 
-The website is designed to be:
-- Modern and professional
-- Easy to maintain and extend
-- Suitable for corporate and enterprise clients
-- Ready for future branding updates (logos, images, colors)
+## Getting Started
 
----
+```bash
+npm install
+npm run dev
+```
 
-## 📄 Pages
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-The website currently includes the following pages:
+## Scripts
 
-- **Home (`index.html`)**  
-  Overview of IKIGAI, core offerings, and visual highlights.
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start development server |
+| `npm run build` | Create production build  |
+| `npm run start` | Run production server    |
+| `npm run lint`  | Run ESLint               |
 
-- **About Us (`about.html`)**  
-  Company background, vision, and development approach.
-
-- **Services (`services.html`)**  
-  Description of software services including CMMS, PMS, inventory systems, and custom development.
-
-- **Contact (`contact.html`)**  
-  Basic contact information for inquiries and partnerships.
-
-Additional pages can be added easily using the same layout and structure.
-
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```text
 ikigai-website/
-│
-├── index.html
-├── about.html
-├── services.html
-├── contact.html
-│
-├── assets/
-│   ├── css/
-│   │   └── main.css
-│   ├── images/
-│   │   ├── sample-1.jpg
-│   │   ├── sample-2.jpg
-│   │   └── sample-3.jpg
-│   └── logo/
-│       ├── logo-light.png
-│       └── logo-dark.png
-│
-└── README.md
+├── config/              # Site content, images, navigation
+├── public/              # Static assets (logo, etc.)
+├── src/
+│   ├── app/             # Next.js App Router pages
+│   ├── components/      # UI components
+│   └── hooks/           # Client-side logic
+└── package.json
+```
+
+## Pages
+
+- `/` — Home
+- `/about` — About Us
+- `/services` — Services
+- `/contact` — Contact
+
+Legacy `.html` URLs (`/about.html`, etc.) redirect automatically to the new routes.
+
+## Logo
+
+Logo files live in `public/`:
+
+- `logo-simple-transparent.png` — header logo
+- `logo-icon.png` — favicon
+
+Paths are configured in `config/images.ts`.
+
+## Deployment
+
+Deploy to [Vercel](https://vercel.com), Netlify, or any Node.js host:
+
+```bash
+npm run build
+npm run start
+```
+
+For static hosting (similar to the old HTML setup), add `output: "export"` to `next.config.ts` and run `npm run build` — output goes to the `out/` folder.
