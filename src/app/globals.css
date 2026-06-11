@@ -479,14 +479,17 @@ body::before {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+    justify-content: center;
     gap: 48px;
     padding: 32px 0 24px;
+    text-align: center;
 }
 
 .footer-grid > div {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 12px;
 }
 
@@ -1032,7 +1035,8 @@ body::before {
 
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
+        justify-content: center;
+        gap: 32px;
         padding: 24px 0 20px;
     }
 
