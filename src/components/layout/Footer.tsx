@@ -6,30 +6,27 @@ export function Footer() {
     <footer className="site-footer">
       <div className="footer-container">
         <div className="footer-grid">
-          <div>
+          <div className="footer-brand">
             <strong>{siteConfig.name}</strong>
-            <p>
-              Building reliable software solutions for modern operations. We
-              specialize in enterprise-grade systems designed for operational
-              excellence.
-            </p>
+            <p className="footer-description">{siteConfig.footerDescription}</p>
           </div>
-          <div>
+          <div className="footer-contact">
             <strong>Contact</strong>
             <p>
-              Email:{" "}
               <a href={`mailto:${contactConfig.email}`}>{contactConfig.email}</a>
             </p>
-            <p>We aim to respond to all inquiries promptly and professionally.</p>
+            <p className="footer-contact-note">{siteConfig.footerContactNote}</p>
           </div>
-          <div>
+          <nav className="footer-nav" aria-label="Footer navigation">
             <strong>Navigation</strong>
-            {navigationLinks.map((link) => (
-              <p key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </p>
-            ))}
-          </div>
+            <ul className="footer-nav__list">
+              {navigationLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
         <div className="footer-bottom">{siteConfig.copyright}</div>
       </div>

@@ -363,6 +363,73 @@ body.mobile-menu-open {
     line-height: 1;
 }
 
+/* HOME PAGE — centered layout */
+.home-page .hero .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.home-page .hero h1,
+.home-page .hero p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-page .hero-actions {
+    justify-content: center;
+}
+
+.home-page .section-header {
+    text-align: center;
+}
+
+.home-page .section h2,
+.home-page .section-header h2 {
+    display: block;
+    text-align: center;
+}
+
+.home-page .section h2::after,
+.home-page .section-header h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.home-page .section-subtitle {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-page .intro-content {
+    text-align: center;
+}
+
+.home-page .intro-content p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-page .intro-image {
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.home-page .benefits-grid,
+.home-page .services-preview-grid {
+    justify-items: center;
+}
+
+.home-page .benefit-item,
+.home-page .service-preview-card {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+}
+
 /* HERO */
 .hero {
     padding: 80px 0 72px;
@@ -654,7 +721,18 @@ body.mobile-menu-open {
     line-height: 1.7;
 }
 
-.footer-grid a {
+.footer-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-nav__list a,
+.footer-contact a {
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.2s ease;
@@ -662,7 +740,8 @@ body.mobile-menu-open {
     font-weight: 300;
 }
 
-.footer-grid a:hover {
+.footer-nav__list a:hover,
+.footer-contact a:hover {
     color: var(--text-primary);
 }
 
@@ -1123,6 +1202,117 @@ body.mobile-menu-open {
         order: -1;
     }
 
+    /* Mobile — centered page content */
+    main .hero .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    main .hero h1,
+    main .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    main .hero-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    main .section-header {
+        text-align: center;
+    }
+
+    main .section h2,
+    main .section-header h2 {
+        display: block;
+        text-align: center;
+    }
+
+    main .section h2::after,
+    main .section-header h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    main .section-subtitle {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    main .section p,
+    main .text-side p {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    main .intro-content,
+    main .text-side,
+    main .content-with-image,
+    main .intro-with-image {
+        text-align: center;
+    }
+
+    main .image-side,
+    main .intro-image {
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    main .vision-mission-grid,
+    main .values-grid,
+    main .benefits-grid,
+    main .services-preview-grid,
+    main .services-offerings-list {
+        justify-items: center;
+    }
+
+    main .vision-mission-card,
+    main .value-card,
+    main .benefit-item,
+    main .service-preview-card,
+    main .service-featured {
+        width: 100%;
+        max-width: 480px;
+    }
+
+    main .vision-mission-card,
+    main .value-card,
+    main .benefit-item,
+    main .service-preview-card,
+    main .service-featured__content {
+        text-align: center;
+    }
+
+    main .service-highlights {
+        justify-content: center;
+    }
+
+    main .contact-info {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    main .contact-info strong {
+        display: block;
+        min-width: unset;
+        margin-bottom: 4px;
+    }
+
+    main .contact-info p {
+        text-align: center;
+    }
+
+    main .address-block {
+        margin-top: 20px;
+    }
+
     .cta-section h2 {
         font-size: 28px;
     }
@@ -1176,15 +1366,70 @@ body.mobile-menu-open {
         gap: 24px;
     }
 
+    .site-footer {
+        margin-top: 40px;
+    }
+
     .footer-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 0 10px;
+    }
+
+    .footer-grid > div,
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .footer-description,
+    .footer-contact-note {
+        display: none;
+    }
+
+    .footer-grid strong {
+        font-size: 11px;
+        margin-bottom: 2px;
+        letter-spacing: 0.1em;
+    }
+
+    .site-footer p,
+    .footer-nav__list a,
+    .footer-contact a {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .footer-nav__list {
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 32px;
-        padding: 24px 0 20px;
+        gap: 6px 16px;
+    }
+
+    .footer-bottom {
+        padding: 10px 16px;
+        font-size: 11px;
     }
 
     .footer-container {
-        padding: 0 20px;
+        padding: 0 16px;
+    }
+
+    .home-page .intro-with-image {
+        text-align: center;
+    }
+
+    .home-page .intro-content {
+        order: 2;
+    }
+
+    .home-page .intro-image {
+        order: 1;
     }
 }
 

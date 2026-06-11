@@ -6,12 +6,12 @@ import { ServicesPreviewSection } from "@/components/home/ServicesPreviewSection
 
 export function HomePage() {
   return (
-    <>
+    <div className="home-page">
       <HomeHeroSection />
       <IntroSection />
       <ServicesPreviewSection />
       <BenefitsSection />
       <HomeCtaSection />
-    </>
+    </div>
   );
 }

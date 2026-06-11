@@ -4,6 +4,10 @@ export const siteConfig = {
   description:
     "Multi-disciplinary technology solutions across software development, data engineering, automation, civil works, renewable energy, and industrial parts supply.",
   copyright: "© 2026 IKIGAI. All rights reserved.",
+  footerDescription:
+    "Building reliable software solutions for modern operations. We specialize in enterprise-grade systems designed for operational excellence.",
+  footerContactNote:
+    "We aim to respond to all inquiries promptly and professionally.",
 } as const;
 
 export const contactConfig = {
