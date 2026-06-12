@@ -15,7 +15,7 @@ export const contactConfig = {
   phone: "+63 928 239 2092",
   phoneHref: "tel:+639282392092",
   address: {
-    line1: "B1 L21 Greentown Villas 1 Extension",
+    line1: "B11 L21 Greentown Villas 1 Extension",
     line2: "Mambog III, Bacoor City, Cavite, Philippines",
   },
 } as const;
